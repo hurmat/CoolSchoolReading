@@ -1,4 +1,4 @@
-package com.techeasesolutions.coolschoolreading;
+package com.tes.coolschool;
 
 /**
  * Created by hurmat on 19/10/2017.

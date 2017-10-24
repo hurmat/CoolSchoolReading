@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package com.techeasesolutions.coolschoolreading.util;
+package com.tes.coolschool.util;
 
 import android.text.TextUtils;
 import android.util.Base64;

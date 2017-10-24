@@ -1,4 +1,4 @@
-package com.techeasesolutions.coolschoolreading;
+package com.tes.coolschool;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;

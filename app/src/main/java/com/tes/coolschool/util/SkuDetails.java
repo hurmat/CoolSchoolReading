@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package com.techeasesolutions.coolschoolreading.util;
+package com.tes.coolschool.util;
 
 import org.json.JSONException;
 import org.json.JSONObject;

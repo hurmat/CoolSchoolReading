@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package com.techeasesolutions.coolschoolreading.util;
+package com.tes.coolschool.util;
 
 /**
  * Exception thrown when something went wrong with in-app billing.

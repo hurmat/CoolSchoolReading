@@ -1,4 +1,4 @@
-package com.techeasesolutions.coolschoolreading;
+package com.tes.coolschool;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,8 +14,8 @@ import android.widget.Toast;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
-import com.techeasesolutions.coolschoolreading.util.IabHelper;
-import com.techeasesolutions.coolschoolreading.util.IabResult;
+import com.tes.coolschool.util.IabHelper;
+import com.tes.coolschool.util.IabResult;
 
 public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.OnInitializedListener {
 

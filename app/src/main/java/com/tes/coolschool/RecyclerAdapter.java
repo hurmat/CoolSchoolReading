@@ -1,4 +1,4 @@
-package com.techeasesolutions.coolschoolreading;
+package com.tes.coolschool;
 
 import android.content.Context;
 import android.content.Intent;

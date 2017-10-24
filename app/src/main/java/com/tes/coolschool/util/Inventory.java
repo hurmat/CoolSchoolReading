@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package com.techeasesolutions.coolschoolreading.util;
+package com.tes.coolschool.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
