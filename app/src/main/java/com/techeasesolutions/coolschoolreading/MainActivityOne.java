@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,12 +14,16 @@ import android.widget.Toast;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
+import com.techeasesolutions.coolschoolreading.util.IabHelper;
+import com.techeasesolutions.coolschoolreading.util.IabResult;
 
 public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.OnInitializedListener {
 
     Toolbar toolbar;
     public static final  String Video_ID = "yBKMztVpkBc";
-    
+
+    IabHelper iabHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +35,17 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
         getSupportActionBar().setDisplayShowTitleEnabled(false);
        // toolbar.setLogo(R.drawable.);
 
-
+        iabHelper = new IabHelper(this, CommonKeys.Base64Publickey);
+        iabHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
+            public void onIabSetupFinished(IabResult result) {
+                if (!result.isSuccess()) {
+                    // Oh noes, there was a problem.
+                    Log.d("Helper", "Problem setting up In-app Billing: " + result);
+                }
+                // Hooray, IAB is fully set up!
+                Toast.makeText(MainActivityOne.this, "In app billing setup successfull!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         YouTubePlayerSupportFragment fragment =
                 (YouTubePlayerSupportFragment) getSupportFragmentManager().findFragmentById(R.id.youtube_fragment);
@@ -44,7 +59,10 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
         recyclerView.setLayoutManager(linearLayoutManager);
         RecyclerAdapter adapter=new RecyclerAdapter(MainActivityOne.this);
         recyclerView.setAdapter(adapter);
+
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -81,4 +99,14 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (iabHelper != null) try {
+            iabHelper.dispose();
+        } catch (IabHelper.IabAsyncInProgressException e) {
+            e.printStackTrace();
+        }
+        iabHelper = null;
+    }
 }
