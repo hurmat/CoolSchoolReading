@@ -9,6 +9,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -16,6 +19,8 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 import com.tes.coolschool.util.IabHelper;
 import com.tes.coolschool.util.IabResult;
+import com.tes.coolschool.util.Inventory;
+import com.tes.coolschool.util.Purchase;
 
 public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.OnInitializedListener {
 
@@ -23,6 +28,12 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
     public static final  String Video_ID = "yBKMztVpkBc";
 
     IabHelper iabHelper;
+
+    Button testBtn;
+    TextView testText;
+    String SKU_ID ="android.test.purchased";
+
+
 
 
     @Override
@@ -36,6 +47,12 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
        // toolbar.setLogo(R.drawable.);
 
         iabHelper = new IabHelper(this, CommonKeys.Base64Publickey);
+
+
+        YouTubePlayerSupportFragment fragment =
+                (YouTubePlayerSupportFragment) getSupportFragmentManager().findFragmentById(R.id.youtube_fragment);
+        fragment.initialize(CommonKeys.API_KEY,this);
+
         iabHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
             public void onIabSetupFinished(IabResult result) {
                 if (!result.isSuccess()) {
@@ -47,9 +64,6 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
             }
         });
 
-        YouTubePlayerSupportFragment fragment =
-                (YouTubePlayerSupportFragment) getSupportFragmentManager().findFragmentById(R.id.youtube_fragment);
-        fragment.initialize(CommonKeys.API_KEY,this);
 
         RecyclerView recyclerView=(RecyclerView)findViewById(R.id.viewList);
         recyclerView.setHasFixedSize(true);
@@ -57,9 +71,76 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(linearLayoutManager);
-        RecyclerAdapter adapter=new RecyclerAdapter(MainActivityOne.this);
-        recyclerView.setAdapter(adapter);
 
+        StoriesAdapter storiesAdapter = new StoriesAdapter(MainActivityOne.this);
+        recyclerView.setAdapter(storiesAdapter);
+
+        testBtn = (Button) findViewById(R.id.btnBuy);
+        testBtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            IabHelper.OnIabPurchaseFinishedListener mPurchaseFinishedListener = new IabHelper.OnIabPurchaseFinishedListener() {
+                @Override
+                public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
+
+                    {
+                        if (result.isFailure()) {
+
+                            // Handle error
+                            return;
+                        }
+                        else if (purchase.getSku().equals(SKU_ID)) {
+                          //  Toast.makeText(MainActivityOne.this, "Purchased!!", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                }
+            };
+
+            try {
+
+                iabHelper.launchPurchaseFlow(MainActivityOne.this,SKU_ID, 10001,mPurchaseFinishedListener, "aaa");
+            } catch (IabHelper.IabAsyncInProgressException e) {
+                e.printStackTrace();
+            }
+
+
+            IabHelper.QueryInventoryFinishedListener mGotInventoryListener = new IabHelper.QueryInventoryFinishedListener() {
+                @Override
+                public void onQueryInventoryFinished(IabResult result, Inventory inv) {
+
+
+                    if (result.isFailure()) {
+                        // handle error here
+                    }
+                    else {
+
+                        if (inv.hasPurchase(SKU_ID)) {
+
+                            try {
+                                iabHelper.consumeAsync(inv.getPurchase(SKU_ID), null);
+                            } catch (IabHelper.IabAsyncInProgressException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        // does the user have the premium upgrade?
+                        //mIsPremium = inv.hasPurchase(SKU_PREMIUM);
+                        // update UI accordingly
+                    }
+
+                }
+            };
+            try {
+                iabHelper.queryInventoryAsync(mGotInventoryListener);
+            } catch (IabHelper.IabAsyncInProgressException e) {
+                e.printStackTrace();
+            }
+
+
+
+        }
+    });
 
     }
 
