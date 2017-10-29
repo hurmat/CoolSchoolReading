@@ -1,7 +1,6 @@
 package com.tes.coolschool;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,6 +51,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.VideoI
             @Override
             public void onInitializationSuccess(YouTubeThumbnailView youTubeThumbnailView, YouTubeThumbnailLoader youTubeThumbnailLoader) {
 
+
                 youTubeThumbnailLoader.setVideo(VideoID[position]);
                 youTubeThumbnailLoader.setOnThumbnailLoadedListener(onThumbnailLoadedListener);
             }
@@ -86,9 +86,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.VideoI
         @Override
         public void onClick(View v) {
 
-            ctx.startActivity(new Intent(ctx,IntroductionActiviy.class));
+            if(ctx instanceof MainActivityOne){
+                ((MainActivityOne)ctx).stratPurchase(VideoID[getLayoutPosition()].toString());
+            }
 
-           /* Intent intent = YouTubeStandalonePlayer.createVideoIntent((Activity) ctx, CommonKeys.API_KEY, VideoID[getLayoutPosition()]);
+           /* ctx.startActivity(new Intent(ctx,IntroductionActiviy.class));
+
+            Intent intent = YouTubeStandalonePlayer.createVideoIntent((Activity) ctx, CommonKeys.API_KEY, VideoID[getLayoutPosition()]);
             ctx.startActivity(intent);*/
         }
     }
