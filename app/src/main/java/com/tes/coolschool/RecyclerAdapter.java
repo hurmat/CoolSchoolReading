@@ -90,9 +90,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.VideoI
                 ((MainActivityOne)ctx).stratPurchase(VideoID[getLayoutPosition()].toString());
             }
 
-           /* ctx.startActivity(new Intent(ctx,IntroductionActiviy.class));
+           /*
 
-            Intent intent = YouTubeStandalonePlayer.createVideoIntent((Activity) ctx, CommonKeys.API_KEY, VideoID[getLayoutPosition()]);
+       Intent intent = YouTubeStandalonePlayer.createVideoIntent((Activity) ctx, CommonKeys.API_KEY, VideoID[getLayoutPosition()]);
             ctx.startActivity(intent);*/
         }
     }

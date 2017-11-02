@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="com.android.vending.BILLING"/>
+    <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
         android:allowBackup="true"
@@ -13,18 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.tes.coolschool.SplashActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.tes.coolschool.MainActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name="com.tes.coolschool.MainActivityOne"
+        <activity
+            android:name=".MainActivityOne"
             android:screenOrientation="landscape" />
-        <activity android:name="com.tes.coolschool.IntroductionActiviy"></activity>
+        <activity android:name=".PlayActivity"></activity>
     </application>
 
 </manifest>

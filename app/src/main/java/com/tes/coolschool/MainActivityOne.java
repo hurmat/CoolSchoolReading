@@ -10,8 +10,6 @@ import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerSupportFragment;
-import com.google.android.youtube.player.YouTubeStandalonePlayer;
 import com.tes.coolschool.util.IabHelper;
 import com.tes.coolschool.util.IabResult;
 import com.tes.coolschool.util.Inventory;
@@ -33,9 +31,9 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
         iabHelper = new IabHelper(this, CommonKeys.Base64Publickey);
 
 
-        YouTubePlayerSupportFragment fragment =
+        /*YouTubePlayerSupportFragment fragment =
                 (YouTubePlayerSupportFragment) getSupportFragmentManager().findFragmentById(R.id.youtube_fragment);
-        fragment.initialize(CommonKeys.API_KEY,this);
+        fragment.initialize(CommonKeys.API_KEY,this);*/
 
         iabHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
             public void onIabSetupFinished(IabResult result) {
@@ -84,7 +82,7 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
     public void stratPurchase(final String videoId) {
 
 
-        PaidVideo = videoId;
+        CommonKeys.ID_Video = videoId;
         try {
 
             iabHelper.launchPurchaseFlow(MainActivityOne.this, SKU_ID, 10001, mPurchaseFinishedListener, "aaa");
@@ -106,9 +104,10 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
                     }
                     else if (purchase.getSku().equals(SKU_ID)) {
                         Toast.makeText(MainActivityOne.this, "Purchased!!", Toast.LENGTH_SHORT).show();
-                        Intent intent = YouTubeStandalonePlayer.createVideoIntent(MainActivityOne.this, CommonKeys.API_KEY, PaidVideo);
-                        startActivity(intent);
-                        finish();
+                       /* Intent intent = YouTubeStandalonePlayer.createVideoIntent(MainActivityOne.this, CommonKeys.API_KEY, PaidVideo);
+                        startActivity(intent);*/
+                       startActivity(new Intent(MainActivityOne.this, PlayActivity.class));
+                       // finish();
                        // consumeItem();
 
 
@@ -192,6 +191,7 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
         youTubePlayer.loadVideo(Video_ID);
+
     }
 
     @Override
