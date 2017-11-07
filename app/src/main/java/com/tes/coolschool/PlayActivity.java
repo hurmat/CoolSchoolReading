@@ -16,6 +16,7 @@ import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 public class PlayActivity extends AppCompatActivity implements YouTubePlayer.OnInitializedListener  {
 
     ImageButton back, next;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class PlayActivity extends AppCompatActivity implements YouTubePlayer.OnI
                 (YouTubePlayerSupportFragment) getSupportFragmentManager().findFragmentById(R.id.youtubePlayFrag);
         fragment.initialize(CommonKeys.API_KEY,this);
 
-        RecyclerView recyclerView=(RecyclerView)findViewById(R.id.List);
+        recyclerView =(RecyclerView)findViewById(R.id.List);
         back =(ImageButton)findViewById(R.id.btnBack);
         next =(ImageButton)findViewById(R.id.btnNext);
         recyclerView.setHasFixedSize(true);
@@ -34,7 +35,7 @@ public class PlayActivity extends AppCompatActivity implements YouTubePlayer.OnI
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(linearLayoutManager);
-        RecyclerAdapter adapter=new RecyclerAdapter(PlayActivity.this);
+        PlayAdapter adapter=new PlayAdapter(PlayActivity.this);
         recyclerView.setAdapter(adapter);
 
         back.setOnClickListener(new View.OnClickListener() {

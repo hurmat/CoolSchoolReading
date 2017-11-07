@@ -2,6 +2,7 @@ package com.tes.coolschool;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +23,7 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
     String PaidVideo;
     IabHelper iabHelper;
     String SKU_ID ="android.test.purchased";
+    FloatingActionButton searchBtn ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +31,6 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
         setContentView(R.layout.activity_main_one);
 
         iabHelper = new IabHelper(this, CommonKeys.Base64Publickey);
-
-
         /*YouTubePlayerSupportFragment fragment =
                 (YouTubePlayerSupportFragment) getSupportFragmentManager().findFragmentById(R.id.youtube_fragment);
         fragment.initialize(CommonKeys.API_KEY,this);*/
@@ -47,7 +47,6 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
                 }
             }
         });
-
 
         RecyclerView recyclerView=(RecyclerView)findViewById(R.id.viewList);
         recyclerView.setHasFixedSize(true);

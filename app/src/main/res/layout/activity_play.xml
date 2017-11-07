@@ -48,6 +48,7 @@
         android:id="@+id/scrollViewOne"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_weight="0"
@@ -60,6 +61,7 @@
             android:id="@+id/List"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:scrollbars="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="8dp" />
