@@ -54,6 +54,7 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.VideoInfoHolde
 
                 youTubeThumbnailLoader.setVideo(VideoID[position]);
                 youTubeThumbnailLoader.setOnThumbnailLoadedListener(onThumbnailLoadedListener);
+              //  youTubeThumbnailLoader.release();
             }
 
             @Override

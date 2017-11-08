@@ -44,6 +44,7 @@ import com.google.android.youtube.player.YouTubeThumbnailView;
             @Override
             public void onThumbnailLoaded(YouTubeThumbnailView youTubeThumbnailView, String s) {
                 youTubeThumbnailView.setVisibility(View.VISIBLE);
+
                // holder.relativeLayoutOverYouTubeThumbnailView.setVisibility(View.VISIBLE);
             }
         };
@@ -55,6 +56,7 @@ import com.google.android.youtube.player.YouTubeThumbnailView;
 
                 youTubeThumbnailLoader.setVideo(VideoID[position]);
                 youTubeThumbnailLoader.setOnThumbnailLoadedListener(onThumbnailLoadedListener);
+               // youTubeThumbnailLoader.release();
             }
 
             @Override
