@@ -54,7 +54,7 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.VideoInfoHolde
 
                 youTubeThumbnailLoader.setVideo(VideoID[position]);
                 youTubeThumbnailLoader.setOnThumbnailLoadedListener(onThumbnailLoadedListener);
-              //  youTubeThumbnailLoader.release();
+
             }
 
             @Override
@@ -84,6 +84,7 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.VideoInfoHolde
             // relativeLayoutOverYouTubeThumbnailView = (RelativeLayout) itemView.findViewById(R.id.relativeLayout_over_youtube_thumbnail);
             youTubeThumbnailView = (YouTubeThumbnailView) itemView.findViewById(R.id.yt_thumbnail);
             youTubeThumbnailView.setOnClickListener(this);
+
         }
 
         @Override

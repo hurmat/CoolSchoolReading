@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".SplashActivity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,9 +25,11 @@
         <activity
             android:name=".MainActivityOne"
             android:screenOrientation="landscape" />
-        <activity android:name=".PlayActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".SearchActivity"></activity>
+        <activity
+            android:name=".PlayActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".YoutubePlayerActivity"></activity>
     </application>
 
 </manifest>

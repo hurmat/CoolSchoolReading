@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -24,31 +27,42 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
     IabHelper iabHelper;
     String SKU_ID ="android.test.purchased";
     FloatingActionButton searchBtn ;
+    ProgressBar progressBar;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_one);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        recyclerView=(RecyclerView)findViewById(R.id.viewList);
+
+        showProgressBar();
 
         iabHelper = new IabHelper(this, CommonKeys.Base64Publickey);
-        /*YouTubePlayerSupportFragment fragment =
-                (YouTubePlayerSupportFragment) getSupportFragmentManager().findFragmentById(R.id.youtube_fragment);
-        fragment.initialize(CommonKeys.API_KEY,this);*/
-
         iabHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
             public void onIabSetupFinished(IabResult result) {
                 if (!result.isSuccess()) {
-                    // Oh noes, there was a problem.
+                    // there was a problem.
                     Log.d("Helper", "Problem setting up In-app Billing: " + result);
                 }else {
-                    // Hooray, IAB is fully set up!
+                    // IAB is fully set up!
                     Toast.makeText(MainActivityOne.this, "In app billing setup successfull!", Toast.LENGTH_SHORT).show();
                     consumeItem();
                 }
             }
         });
 
-        RecyclerView recyclerView=(RecyclerView)findViewById(R.id.viewList);
+        //show progress bar
+
+
+
+
+
         recyclerView.setHasFixedSize(true);
         //to use RecycleView, you need a layout manager. default is LinearLayoutManager
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
@@ -56,6 +70,9 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
         recyclerView.setLayoutManager(linearLayoutManager);
         RecyclerAdapter adapter=new RecyclerAdapter(MainActivityOne.this);
         recyclerView.setAdapter(adapter);
+        hideProgressBar();
+
+
 
        /* StoriesAdapter storiesAdapter = new StoriesAdapter(MainActivityOne.this);
         recyclerView.setAdapter(storiesAdapter);*/
@@ -106,6 +123,7 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
                        /* Intent intent = YouTubeStandalonePlayer.createVideoIntent(MainActivityOne.this, CommonKeys.API_KEY, PaidVideo);
                         startActivity(intent);*/
                        startActivity(new Intent(MainActivityOne.this, PlayActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                        // finish();
                        // consumeItem();
 
@@ -162,31 +180,6 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
     };
 
 
-   /* @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_main, menu);
-        return true;
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int res_id = item.getItemId();
-        if(res_id==R.id.action_search){
-            Toast.makeText(this, "Action search", Toast.LENGTH_SHORT).show();
-
-        }
-        else if(res_id == R.id.action_menu){
-            Toast.makeText(this, "Action menu", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(this, "Nothing found", Toast.LENGTH_SHORT).show();
-        }
-        return true;
-    }*/
-
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
         youTubePlayer.loadVideo(Video_ID);
@@ -208,4 +201,19 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
         }
         iabHelper = null;
     }
+
+
+    public void showProgressBar(){
+
+        recyclerView.setVisibility(View.INVISIBLE);
+        progressBar.setIndeterminate(true);
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgressBar(){
+
+        progressBar.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
+    }
+
 }
