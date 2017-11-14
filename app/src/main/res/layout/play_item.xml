@@ -5,6 +5,10 @@
     android:layout_width="120dp"
     android:layout_height="@android:dimen/notification_large_icon_height"
     android:layout_gravity="center"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
     android:layout_weight="2"
     android:gravity="center">
 

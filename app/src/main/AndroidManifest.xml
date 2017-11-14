@@ -29,7 +29,6 @@
             android:name=".PlayActivity"
             android:screenOrientation="landscape" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".YoutubePlayerActivity"></activity>
     </application>
 
 </manifest>

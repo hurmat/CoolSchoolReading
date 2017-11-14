@@ -33,6 +33,7 @@
             android:layout_weight="1"
             android:clickable="true"
             android:contextClickable="true"
+            android:elevation="24dp"
             android:foregroundGravity="center">
 
             <fragment

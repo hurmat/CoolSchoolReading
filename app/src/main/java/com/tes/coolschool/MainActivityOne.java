@@ -57,12 +57,6 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
             }
         });
 
-        //show progress bar
-
-
-
-
-
         recyclerView.setHasFixedSize(true);
         //to use RecycleView, you need a layout manager. default is LinearLayoutManager
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
