@@ -27,8 +27,8 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
     IabHelper iabHelper;
     String SKU_ID ="android.test.purchased";
     FloatingActionButton searchBtn ;
-    ProgressBar progressBar;
-    RecyclerView recyclerView;
+    static ProgressBar progressBar;
+    static RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
         recyclerView.setLayoutManager(linearLayoutManager);
         RecyclerAdapter adapter=new RecyclerAdapter(MainActivityOne.this);
         recyclerView.setAdapter(adapter);
-        hideProgressBar();
+
 
 
 
@@ -200,6 +200,7 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
     public void showProgressBar(){
 
         recyclerView.setVisibility(View.INVISIBLE);
+       // progressBar.incrementProgressBy(10);
         progressBar.setIndeterminate(true);
         progressBar.setVisibility(View.VISIBLE);
     }

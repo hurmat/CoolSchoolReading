@@ -91,6 +91,8 @@ public class PlayActivity extends AppCompatActivity implements YouTubePlayer.OnI
         youTubePlayer.loadVideo(CommonKeys.ID_Video);
         youTubePlayer.setFullscreen(true);
 
+
+
         youTubePlayer.setOnFullscreenListener(new YouTubePlayer.OnFullscreenListener() {
             @Override
             public void onFullscreen(boolean b) {

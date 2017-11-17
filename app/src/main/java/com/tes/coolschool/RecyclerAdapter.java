@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubeThumbnailLoader;
@@ -19,7 +20,8 @@ import com.google.android.youtube.player.YouTubeThumbnailView;
 
     //these ids are the unique id for each video
   // String[] VideoID = {"YKrwe8i7XNM", "kKIj7B1uxeo", "I8TzcfBjSoc","UZUgEEM0bQ4&t","8ueYlFT0G0c","UeutjHRg0wY","Z_67dG5guow&t","0vN4jT4o3MQ" };
-    String[] VideoID = {"YKrwe8i7XNM", "kKIj7B1uxeo"};
+    String[] VideoID = {"YKrwe8i7XNM","lEnQ-nKqkkk","PBi-Cbu02Mw"};
+    String[] VideoTitle ={ "Snow White","Christmas","Snow White"};
     Context ctx;
 
     public RecyclerAdapter(Context context) {
@@ -36,7 +38,7 @@ import com.google.android.youtube.player.YouTubeThumbnailView;
     public void onBindViewHolder(final VideoInfoHolder holder, final int position) {
 
 
-      /*  final YouTubeThumbnailLoader.OnThumbnailLoadedListener  onThumbnailLoadedListener = new YouTubeThumbnailLoader.OnThumbnailLoadedListener(){
+       final YouTubeThumbnailLoader.OnThumbnailLoadedListener  onThumbnailLoadedListener = new YouTubeThumbnailLoader.OnThumbnailLoadedListener(){
             @Override
             public void onThumbnailError(YouTubeThumbnailView youTubeThumbnailView, YouTubeThumbnailLoader.ErrorReason errorReason) {
 
@@ -46,9 +48,13 @@ import com.google.android.youtube.player.YouTubeThumbnailView;
             public void onThumbnailLoaded(YouTubeThumbnailView youTubeThumbnailView, String s) {
                 youTubeThumbnailView.setVisibility(View.VISIBLE);
 
-              //  holder.relativeLayoutOverYouTubeThumbnailView.setVisibility(View.VISIBLE);
+             //   holder.relativeLayoutOverYouTubeThumbnailView.setVisibility(View.VISIBLE);
+                holder.title.setText(VideoTitle[position]);
+                holder.title.setVisibility(View.VISIBLE);
+                MainActivityOne.progressBar.setVisibility(View.GONE);
+                MainActivityOne.recyclerView.setVisibility(View.VISIBLE);
             }
-        };*/
+        };
 
         holder.youTubeThumbnailView.initialize(CommonKeys.API_KEY, new YouTubeThumbnailView.OnInitializedListener() {
             @Override
@@ -58,7 +64,10 @@ import com.google.android.youtube.player.YouTubeThumbnailView;
                 //youTubeThumbnailView.setVisibility(View.VISIBLE);
                 youTubeThumbnailLoader.setVideo(VideoID[position]);
 
-                //youTubeThumbnailLoader.setOnThumbnailLoadedListener(onThumbnailLoadedListener);
+
+
+
+                youTubeThumbnailLoader.setOnThumbnailLoadedListener(onThumbnailLoadedListener);
                 // youTubeThumbnailLoader.release();
             }
 
@@ -79,11 +88,14 @@ import com.google.android.youtube.player.YouTubeThumbnailView;
       //  protected RelativeLayout relativeLayoutOverYouTubeThumbnailView;
         YouTubeThumbnailView youTubeThumbnailView;
         protected ImageView buyButton;
+        TextView title;
 
         public VideoInfoHolder(View itemView) {
             super(itemView);
-           // relativeLayoutOverYouTubeThumbnailView = (RelativeLayout) itemView.findViewById(R.id.relativeLayout_over_youtube_thumbnail);
+          //  relativeLayoutOverYouTubeThumbnailView = (RelativeLayout) itemView.findViewById(R.id.relativeLayout_over_youtube_thumbnail);
+
             youTubeThumbnailView = (YouTubeThumbnailView) itemView.findViewById(R.id.yt_thumbnail);
+            title =(TextView)itemView.findViewById(R.id.txtTitle);
             buyButton =(ImageView) itemView.findViewById(R.id.imgBuy);
             buyButton.setOnClickListener(this);
            // youTubeThumbnailView.setOnClickListener(this);
