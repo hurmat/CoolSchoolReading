@@ -38,6 +38,7 @@ public class PlayActivity extends AppCompatActivity implements YouTubePlayer.OnI
 
 
 
+
         recyclerView =(RecyclerView)findViewById(R.id.List);
         back =(ImageButton)findViewById(R.id.btnBack);
         next =(ImageButton)findViewById(R.id.btnNext);
@@ -90,6 +91,7 @@ public class PlayActivity extends AppCompatActivity implements YouTubePlayer.OnI
         this.youtubePlayer = youTubePlayer;
         youTubePlayer.loadVideo(CommonKeys.ID_Video);
         youTubePlayer.setFullscreen(true);
+
 
 
 
