@@ -2,7 +2,6 @@ package com.tes.coolschool;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,21 +11,16 @@ import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer;
 import com.tes.coolschool.util.IabHelper;
 import com.tes.coolschool.util.IabResult;
 import com.tes.coolschool.util.Inventory;
 import com.tes.coolschool.util.Purchase;
 
-public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.OnInitializedListener {
+public class MainActivityOne extends AppCompatActivity  {
 
 
-    public static final  String Video_ID = "yBKMztVpkBc";
-    String PaidVideo;
     IabHelper iabHelper;
     String SKU_ID ="android.test.purchased";
-    FloatingActionButton searchBtn ;
     static ProgressBar progressBar;
     static RecyclerView recyclerView;
 
@@ -62,7 +56,9 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(linearLayoutManager);
+
         RecyclerAdapter adapter=new RecyclerAdapter(MainActivityOne.this);
+
         recyclerView.setAdapter(adapter);
 
 
@@ -96,6 +92,7 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
         try {
 
             iabHelper.launchPurchaseFlow(MainActivityOne.this, SKU_ID, 10001, mPurchaseFinishedListener, "aaa");
+
         } catch (IabHelper.IabAsyncInProgressException e) {
             e.printStackTrace();
         }
@@ -173,17 +170,6 @@ public class MainActivityOne extends AppCompatActivity implements YouTubePlayer.
         }
     };
 
-
-    @Override
-    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-        youTubePlayer.loadVideo(Video_ID);
-
-    }
-
-    @Override
-    public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-
-    }
 
     @Override
     protected void onDestroy() {

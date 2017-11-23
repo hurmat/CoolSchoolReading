@@ -60,13 +60,7 @@ import com.google.android.youtube.player.YouTubeThumbnailView;
             @Override
             public void onInitializationSuccess(YouTubeThumbnailView youTubeThumbnailView, YouTubeThumbnailLoader youTubeThumbnailLoader) {
 
-
-                //youTubeThumbnailView.setVisibility(View.VISIBLE);
                 youTubeThumbnailLoader.setVideo(VideoID[position]);
-
-
-
-
                 youTubeThumbnailLoader.setOnThumbnailLoadedListener(onThumbnailLoadedListener);
                 // youTubeThumbnailLoader.release();
             }
@@ -85,15 +79,12 @@ import com.google.android.youtube.player.YouTubeThumbnailView;
 
     public class VideoInfoHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-      //  protected RelativeLayout relativeLayoutOverYouTubeThumbnailView;
         YouTubeThumbnailView youTubeThumbnailView;
         protected ImageView buyButton;
         TextView title;
 
         public VideoInfoHolder(View itemView) {
             super(itemView);
-          //  relativeLayoutOverYouTubeThumbnailView = (RelativeLayout) itemView.findViewById(R.id.relativeLayout_over_youtube_thumbnail);
-
             youTubeThumbnailView = (YouTubeThumbnailView) itemView.findViewById(R.id.yt_thumbnail);
             title =(TextView)itemView.findViewById(R.id.txtTitle);
             buyButton =(ImageView) itemView.findViewById(R.id.imgBuy);

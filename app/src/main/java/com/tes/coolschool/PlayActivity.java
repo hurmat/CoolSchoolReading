@@ -15,7 +15,7 @@ import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
 public class PlayActivity extends AppCompatActivity implements YouTubePlayer.OnInitializedListener  {
 
-    ImageButton back, next;
+    ImageButton back, next,previous;
     RecyclerView recyclerView;
     private static boolean isFullscreen=true ;
     YouTubePlayer youtubePlayer;
@@ -25,33 +25,26 @@ public class PlayActivity extends AppCompatActivity implements YouTubePlayer.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
-
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-      //  frame =(FrameLayout) findViewById(R.id.youtube_frame);
-       //ll = (LinearLayout) findViewById(R.id.ll);
-
         YouTubePlayerSupportFragment fragment =
                 (YouTubePlayerSupportFragment) getSupportFragmentManager().findFragmentById(R.id.youtubePlayFrag);
         fragment.initialize(CommonKeys.API_KEY,this);
 
-
-
-
         recyclerView =(RecyclerView)findViewById(R.id.List);
         back =(ImageButton)findViewById(R.id.btnBack);
         next =(ImageButton)findViewById(R.id.btnNext);
+        previous=(ImageButton)findViewById(R.id.btnPrevious);
+
         recyclerView.setHasFixedSize(true);
         //to use RecycleView, you need a layout manager. default is LinearLayoutManager
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(linearLayoutManager);
+
         PlayAdapter adapter=new PlayAdapter(PlayActivity.this);
+
         recyclerView.setAdapter(adapter);
-
-
-
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,9 +85,6 @@ public class PlayActivity extends AppCompatActivity implements YouTubePlayer.OnI
         youTubePlayer.loadVideo(CommonKeys.ID_Video);
         youTubePlayer.setFullscreen(true);
 
-
-
-
         youTubePlayer.setOnFullscreenListener(new YouTubePlayer.OnFullscreenListener() {
             @Override
             public void onFullscreen(boolean b) {
@@ -125,6 +115,7 @@ public class PlayActivity extends AppCompatActivity implements YouTubePlayer.OnI
         recyclerView.setVisibility(View.VISIBLE);
         back.setVisibility(View.VISIBLE);
         next.setVisibility(View.VISIBLE);
+        previous.setVisibility(View.VISIBLE);
 
     }
 
@@ -133,6 +124,7 @@ public class PlayActivity extends AppCompatActivity implements YouTubePlayer.OnI
         recyclerView.setVisibility(View.GONE);
         back.setVisibility(View.GONE);
         next.setVisibility(View.GONE);
+        previous.setVisibility(View.GONE);
 
     }
 

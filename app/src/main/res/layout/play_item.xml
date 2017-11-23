@@ -23,7 +23,7 @@
         android:clickable="true"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        card_view:cardCornerRadius="5dp"
+        card_view:cardCornerRadius="2dp"
         card_view:cardElevation="1dp"
         card_view:cardPreventCornerOverlap="false"
         card_view:cardUseCompatPadding="true">
@@ -37,7 +37,6 @@
                 android:id="@+id/yt_thumbnail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/thumbnail"
                 android:scaleType="fitCenter"
                 android:visibility="visible" />
 

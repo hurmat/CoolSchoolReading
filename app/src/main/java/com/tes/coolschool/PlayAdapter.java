@@ -17,7 +17,8 @@ import com.google.android.youtube.player.YouTubeThumbnailView;
 
 public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.VideoInfoHolder> {
 
-    String[] VideoID = {"w42RKov-Fpc", "IjxsOxgNV1I", "I8TzcfBjSoc","UZUgEEM0bQ4&t","8ueYlFT0G0c","UeutjHRg0wY","Z_67dG5guow&t","0vN4jT4o3MQ" };
+   // String[] VideoID = {"l6Qt7M8uGQQ","lEnQ-nKqkkk","PBi-Cbu02Mw"};
+    String[] VideoID = {CommonKeys.ID_Video,CommonKeys.ID_Video,CommonKeys.ID_Video,CommonKeys.ID_Video,CommonKeys.ID_Video,CommonKeys.ID_Video};
     Context ctx;
 
     public PlayAdapter(Context context) {
