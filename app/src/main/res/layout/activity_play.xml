@@ -31,6 +31,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:backgroundTint="@android:color/black"
+                android:visibility="invisible"
                 app:srcCompat="@drawable/ic_leftarrow" />
 
             <ImageButton
@@ -40,6 +41,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
                 android:backgroundTint="@android:color/black"
+                android:visibility="invisible"
                 app:srcCompat="@drawable/ic_fastrevind" />
 
         </RelativeLayout>
@@ -69,6 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:backgroundTint="@android:color/black"
+            android:visibility="invisible"
             app:srcCompat="@drawable/ic_fastforward" />
     </LinearLayout>
 

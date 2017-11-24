@@ -61,6 +61,7 @@ import com.google.android.youtube.player.YouTubeThumbnailView;
             public void onInitializationSuccess(YouTubeThumbnailView youTubeThumbnailView, YouTubeThumbnailLoader youTubeThumbnailLoader) {
 
                 youTubeThumbnailLoader.setVideo(VideoID[position]);
+
                 youTubeThumbnailLoader.setOnThumbnailLoadedListener(onThumbnailLoadedListener);
                 // youTubeThumbnailLoader.release();
             }

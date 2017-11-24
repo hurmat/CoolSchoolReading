@@ -10,8 +10,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -39,6 +38,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="top"
+            android:layout_marginTop="5dp"
             android:foregroundGravity="top"
             android:gravity="top"
             android:orientation="vertical">
@@ -60,33 +60,19 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center">
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp">
 
-        <ScrollView
-            android:id="@+id/scrollViewOne"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/viewList"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="top|center"
-            android:layout_weight="1"
-            android:foregroundGravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/viewList"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="top"
-                android:foregroundGravity="center"
-                android:scrollbars="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                tools:layout_editor_absoluteX="8dp" />
-        </ScrollView>
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:scrollbars="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/parent"
+            tools:layout_editor_absoluteX="8dp" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -95,6 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:foregroundGravity="center" />
+
     </FrameLayout>
 
 </LinearLayout>
