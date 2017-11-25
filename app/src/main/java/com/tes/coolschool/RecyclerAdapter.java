@@ -1,11 +1,12 @@
 package com.tes.coolschool;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -55,7 +56,22 @@ import com.google.android.youtube.player.YouTubeThumbnailView;
                 MainActivityOne.recyclerView.setVisibility(View.VISIBLE);
             }
         };
+        if(position==0){
 
+            holder.buyButton .setVisibility(View.GONE);
+            holder.youTubeThumbnailView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(ctx instanceof MainActivityOne){
+                        CommonKeys.ID_Video= VideoID[position];
+
+                        ((MainActivityOne)ctx).startActivity(new Intent(ctx,PlayActivity.class));
+                       // overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+                    }
+                }
+            });
+        }
         holder.youTubeThumbnailView.initialize(CommonKeys.API_KEY, new YouTubeThumbnailView.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubeThumbnailView youTubeThumbnailView, YouTubeThumbnailLoader youTubeThumbnailLoader) {
@@ -81,14 +97,14 @@ import com.google.android.youtube.player.YouTubeThumbnailView;
     public class VideoInfoHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         YouTubeThumbnailView youTubeThumbnailView;
-        protected ImageView buyButton;
+        protected ImageButton buyButton;
         TextView title;
 
         public VideoInfoHolder(View itemView) {
             super(itemView);
             youTubeThumbnailView = (YouTubeThumbnailView) itemView.findViewById(R.id.yt_thumbnail);
             title =(TextView)itemView.findViewById(R.id.txtTitle);
-            buyButton =(ImageView) itemView.findViewById(R.id.imgBuy);
+            buyButton =(ImageButton) itemView.findViewById(R.id.imgBuy);
             buyButton.setOnClickListener(this);
            // youTubeThumbnailView.setOnClickListener(this);
         }

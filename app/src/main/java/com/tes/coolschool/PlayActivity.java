@@ -61,6 +61,13 @@ public class PlayActivity extends AppCompatActivity implements YouTubePlayer.OnI
                 Toast.makeText(PlayActivity.this, "Play Next!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(PlayActivity.this, "Play Previous!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
@@ -115,6 +122,7 @@ public class PlayActivity extends AppCompatActivity implements YouTubePlayer.OnI
         recyclerView.setVisibility(View.VISIBLE);
         back.setVisibility(View.VISIBLE);
         next.setVisibility(View.VISIBLE);
+
         previous.setVisibility(View.VISIBLE);
 
     }

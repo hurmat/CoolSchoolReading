@@ -34,7 +34,7 @@
                 android:scaleType="fitCenter"
                 android:visibility="visible" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imgBuy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,8 +42,8 @@
                 android:layout_alignEnd="@+id/yt_thumbnail"
                 android:layout_marginBottom="5dp"
                 android:layout_marginRight="5dp"
-                android:foregroundGravity="center"
-                app:srcCompat="@drawable/buy" />
+                android:background="@drawable/buy"
+                android:foregroundGravity="center" />
 
         </RelativeLayout>
 
