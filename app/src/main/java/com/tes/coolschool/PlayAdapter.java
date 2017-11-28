@@ -91,7 +91,7 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.VideoInfoHolde
         @Override
         public void onClick(View v) {
 
-            Toast.makeText(ctx, "clicked", Toast.LENGTH_SHORT).show();
+        //    Toast.makeText(ctx, "clicked", Toast.LENGTH_SHORT).show();
 
             if(ctx instanceof PlayActivity){
                 ((PlayActivity)ctx).youtubePlayer.loadVideo(VideoID[getLayoutPosition()]);           }

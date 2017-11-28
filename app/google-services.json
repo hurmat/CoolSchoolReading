@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "886838304476",
+    "firebase_url": "https://cool-school-7946f.firebaseio.com",
+    "project_id": "cool-school-7946f",
+    "storage_bucket": "cool-school-7946f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886838304476:android:2ad8a6093e4bff71",
+        "android_client_info": {
+          "package_name": "com.tes.coolschool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886838304476-3dcr9tp2p72pnupkfcl6p43bng3ga4iv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOjCb-YZy09LFKa5WT77jXEjQKbxle6Tk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

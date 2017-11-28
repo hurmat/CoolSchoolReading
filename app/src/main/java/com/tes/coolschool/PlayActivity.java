@@ -58,14 +58,14 @@ public class PlayActivity extends AppCompatActivity implements YouTubePlayer.OnI
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(PlayActivity.this, "Play Next!", Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(PlayActivity.this, "Play Next!", Toast.LENGTH_SHORT).show();
             }
         });
 
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(PlayActivity.this, "Play Previous!", Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(PlayActivity.this, "Play Previous!", Toast.LENGTH_SHORT).show();
             }
         });
     }

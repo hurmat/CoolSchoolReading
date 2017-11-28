@@ -42,10 +42,10 @@ public class MainActivityOne extends AppCompatActivity  {
             public void onIabSetupFinished(IabResult result) {
                 if (!result.isSuccess()) {
                     // there was a problem.
-                    Log.d("Helper", "Problem setting up In-app Billing: " + result);
+                //    Log.d("Helper", "Problem setting up In-app Billing: " + result);
                 }else {
                     // IAB is fully set up!
-                    Toast.makeText(MainActivityOne.this, "In app billing setup successfull!", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(MainActivityOne.this, "In app billing setup successfull!", Toast.LENGTH_SHORT).show();
                     consumeItem();
                 }
             }
