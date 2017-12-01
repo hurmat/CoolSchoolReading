@@ -37,6 +37,7 @@ public class MainActivityOne extends AppCompatActivity  {
 
         showProgressBar();
 
+        CommonKeys.purchasedVideoID.add(CommonKeys.VideoID[0]);
         iabHelper = new IabHelper(this, CommonKeys.Base64Publickey);
         iabHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
             public void onIabSetupFinished(IabResult result) {
@@ -46,7 +47,7 @@ public class MainActivityOne extends AppCompatActivity  {
                 }else {
                     // IAB is fully set up!
                    // Toast.makeText(MainActivityOne.this, "In app billing setup successfull!", Toast.LENGTH_SHORT).show();
-                    consumeItem();
+                   // consumeItem();
                 }
             }
         });
@@ -60,12 +61,6 @@ public class MainActivityOne extends AppCompatActivity  {
         RecyclerAdapter adapter=new RecyclerAdapter(MainActivityOne.this);
 
         recyclerView.setAdapter(adapter);
-
-
-
-
-       /* StoriesAdapter storiesAdapter = new StoriesAdapter(MainActivityOne.this);
-        recyclerView.setAdapter(storiesAdapter);*/
 
     }
 
@@ -85,13 +80,15 @@ public class MainActivityOne extends AppCompatActivity  {
         }
     }
 
-    public void stratPurchase(final String videoId) {
+    public void stratPurchase(final String videoId, final String Video_SKU_ID) {
 
 
         CommonKeys.ID_Video = videoId;
+       // SKU_ID = videoId;
         try {
 
-            iabHelper.launchPurchaseFlow(MainActivityOne.this, SKU_ID, 10001, mPurchaseFinishedListener, "aaa");
+
+            iabHelper.launchPurchaseFlow(MainActivityOne.this, Video_SKU_ID, 10001, mPurchaseFinishedListener, "aaa");
 
         } catch (IabHelper.IabAsyncInProgressException e) {
             e.printStackTrace();
@@ -105,14 +102,24 @@ public class MainActivityOne extends AppCompatActivity  {
                 {
                     if (result.isFailure()) {
 
-                        Toast.makeText(MainActivityOne.this, "OnIabPurchaseFinishedListener"+result, Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(MainActivityOne.this, "OnIabPurchaseFinishedListener"+result, Toast.LENGTH_SHORT).show();
+
+                        if(result.getResponse()==7){
+
+
+                            startActivity(new Intent(MainActivityOne.this, PlayActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+
+                        }
                         // Handle error
                         return;
                     }
                     else if (purchase.getSku().equals(SKU_ID)) {
                         Toast.makeText(MainActivityOne.this, "Purchased!!", Toast.LENGTH_SHORT).show();
-                       /* Intent intent = YouTubeStandalonePlayer.createVideoIntent(MainActivityOne.this, CommonKeys.API_KEY, PaidVideo);
-                        startActivity(intent);*/
+                        Log.d("Test", CommonKeys.ID_Video);
+                        CommonKeys.purchasedVideoID.add(CommonKeys.ID_Video);
+
                        startActivity(new Intent(MainActivityOne.this, PlayActivity.class));
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                        // finish();
@@ -196,5 +203,6 @@ public class MainActivityOne extends AppCompatActivity  {
         progressBar.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
     }
+
 
 }

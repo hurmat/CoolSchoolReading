@@ -79,8 +79,10 @@ public class PlayActivity extends AppCompatActivity implements YouTubePlayer.OnI
             youtubePlayer.setFullscreen(false);
 
         }else {
+
             super.onBackPressed();
-         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_righ);
+
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_righ);
         }
     }
 
@@ -101,6 +103,7 @@ public class PlayActivity extends AppCompatActivity implements YouTubePlayer.OnI
                 if(!b)
                 {
                     isFullscreen=false;
+
                     resetVisibility();
 
                 }
